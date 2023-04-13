@@ -3,30 +3,30 @@ package JDBC.pojo;
 
 import lombok.*;
 
-@Getter
-@Setter
+import javax.persistence.*;
+
+@Entity @Table(name = "employee")
+@NoArgsConstructor
+@Getter @Setter
 public class Employee {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column
     private String first_name;
+    @Column
     private String last_name;
+    @Column
     private String gender;
+    @Column
     private int age;
+    @Column
     private int city_id;
-
-    public Employee(String first_name, String last_name, String gender, int age, int city_id) {
-
-        this.first_name = first_name;
-        this.last_name = last_name;
-        this.gender = gender;
-        this.age = age;
-        this.city_id = city_id;
-
-    }
 
     @Override
     public String toString() {
-        return "Employee{" +
+        return "Employee{" + "id = " + id +
                 "first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", gender='" + gender + '\'' +
