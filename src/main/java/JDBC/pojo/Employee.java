@@ -13,25 +13,28 @@ public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column
-    private String first_name;
-    @Column
-    private String last_name;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
     @Column
     private String gender;
     @Column
     private int age;
-    @Column
-    private int city_id;
+    @ManyToOne
+    @JoinColumn(name = "city_id")
+    private City city;
+
+
 
     @Override
     public String toString() {
         return "Employee{" + "id = " + id +
-                "first_name='" + first_name + '\'' +
-                ", last_name='" + last_name + '\'' +
+                "first_name='" + firstName + '\'' +
+                ", last_name='" + lastName + '\'' +
                 ", gender='" + gender + '\'' +
                 ", age=" + age +
-                ", city_id=" + city_id +
+                ", city_id=" + city +
                 '}';
     }
 }
