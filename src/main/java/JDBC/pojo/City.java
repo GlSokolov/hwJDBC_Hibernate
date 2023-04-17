@@ -4,19 +4,27 @@ package JDBC.pojo;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
+import java.util.Set;
 
 @Entity @Table(name = "city")
 @NoArgsConstructor
 @Getter  @Setter
-@ToString
 public class City {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int city_id;
+    @Column(name = "city_id")
+    private int cityId;
+    @Column(name = "city_name")
+    private String cityName;
 
-    private String city_name;
+    @OneToMany(mappedBy = "city", cascade = CascadeType.ALL)
+    private List<Employee> employees;
 
 
-
+    @Override
+    public String toString() {
+        return cityName;
+    }
 }
